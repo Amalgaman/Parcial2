@@ -45,7 +45,7 @@ class Main {
 			
 			opcionesCafe[cafes.indexOf(cafe)]=cafe.getNombre();
 		}
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 4; i++) {
 			opcionesCliente[i]=clientes.get(i).getNombre()+" "+clientes.get(i).getApellido();
 			opcionesCliente[i+2]=socios.get(i).getNombre()+" "+socios.get(i).getApellido();
 		}
@@ -144,30 +144,30 @@ class Main {
 	}
 	public static String calcularVendido(LinkedList<Transaccion> ventas){
 		String xd=" ";
-		int aux,aux1=0,aux2=0,aux3=0,aux4=0;
+		int aux1=0,aux2=0,aux3=0,aux4=0;
 		for (Transaccion venta : ventas) {
-			aux=venta.getCafe().getId();
-			
-			switch (aux) {
+			switch (venta.getCafe().getId()) {
 			case 1:
-				aux1 = aux1+1+venta.getCantidad();
+				aux1++;
 				break;
 			case 2:
-				aux2 =aux2+1+venta.getCantidad();
+				aux2++;
 				break;
 			case 3:
-				aux3 = aux3+1+venta.getCantidad();
+				aux3++;
 				break;
 			case 4:
-				aux4 = aux4+1+venta.getCantidad();
+				aux4++;
 				break;
 		}
 	}
-		if(aux1 > aux2 && aux1 > aux3 && aux1 > aux4) {
+		if(aux1 > aux2 && aux2 > aux3 && aux3 > aux4) {
 		xd = "El cafe mas consumido fue Latte con "+aux1+" unidades";
-		}else if(aux2 > aux3 && aux2 > aux4) {
+		}else if(aux2 > aux3 && aux3 > aux4) {
 			xd = "El cafe mas consumido fue Flat White con "+aux2+" unidades";
+			
 		}else if(aux3 > aux4){
+		
 			xd = "El cafe mas consumido fue Lagrima con "+aux3+" unidades";
 		}else {
 			xd = "El cafe mas consumido fue Expresso con "+aux4+" unidades";
@@ -197,7 +197,6 @@ class Main {
 	public static void quitarVenta(LinkedList<Transaccion> ventas){
 		String[] lista=new String[ventas.size()];
 		String op;
-		boolean xd =false;
 		
 		for (Transaccion venta : ventas) {
 			
@@ -214,14 +213,11 @@ class Main {
 				,lista[0] // posicion del que va aparecer seleccionado
 				);
 		
-		int i=0;
-		while(i < ventas.size() && !xd) {
-			if (op.equals(String.valueOf(ventas.get(i).getId()))) {
-				ventas.remove(i);
-				xd =true;
+		for (Transaccion venta : ventas) {
+			if (op.equals(String.valueOf(venta.getId()))) {
+				ventas.remove(ventas.indexOf(venta));
 			}
 		}
-		
 }
 
 }

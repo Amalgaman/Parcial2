@@ -197,7 +197,6 @@ class Main {
 	public static void quitarVenta(LinkedList<Transaccion> ventas){
 		String[] lista=new String[ventas.size()];
 		String op;
-		boolean xd =false;
 		
 		for (Transaccion venta : ventas) {
 			
@@ -214,14 +213,11 @@ class Main {
 				,lista[0] // posicion del que va aparecer seleccionado
 				);
 		
-		int i=0;
-		while(i < ventas.size() && !xd) {
-			if (op.equals(String.valueOf(ventas.get(i).getId()))) {
-				ventas.remove(i);
-				xd =true;
+		for (Transaccion venta : ventas) {
+			if (op.equals(String.valueOf(venta.getId()))) {
+				ventas.remove(ventas.indexOf(venta));
 			}
 		}
-		
 }
 
 }

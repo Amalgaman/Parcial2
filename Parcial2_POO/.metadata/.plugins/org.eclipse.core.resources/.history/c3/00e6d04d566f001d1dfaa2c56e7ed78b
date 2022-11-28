@@ -52,19 +52,7 @@ public class Transaccion {
 	}
 	@Override
 	public String toString() {
-		return "Transaccion "+id+", "+this.cafe.getNombre()+", unidades: "+cantidad+ ", total: "+total+", "+cliente+", tarjeta: "+nro_socio;
-	}
-	public double getTotal() {
-		return total;
-	}
-	public void setTotal(double total) {
-		this.total = total;
-	}
-	public static int getAu() {
-		return au;
-	}
-	public static void setAu(int au) {
-		Transaccion.au = au;
+		return "Transaccion "+id+", "+this.cafe.getNombre()+", unidades: "+cantidad+ ", total: "+total+", "+cliente+", socio: "+nro_socio;
 	}
 	
 	
