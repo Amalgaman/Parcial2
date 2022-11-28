@@ -1,0 +1,13 @@
+package interfaz;
+
+class Main {
+
+	boolean fin_dia = false;
+	
+	do {
+		
+	}while(!fin_dia);
+
+	}
+
+}
